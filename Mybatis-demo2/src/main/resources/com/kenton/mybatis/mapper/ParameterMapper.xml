@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kenton.mybatis.mapper.ParameterMapper">
+
+    <insert id="insertUser">
+        insert into t_user
+        values (null, 'admin', '123456', 23, '男', '12345@qq.com')
+    </insert>
+
+    <insert id="insertUser2">
+        insert into  t_user values (null ,#{username},#{password},#{age},#{sex},#{email})
+    </insert>
+
+
+    <select id="getUserByUsername" resultType="User">
+        select * from t_user where username = '${username}'
+    </select>
+
+    <select id="getAllUser" resultType="User">
+        select * from t_user
+    </select>
+
+    <select id="checkLogin" resultType="User">
+        select * from t_user where username = #{arg0} and password = #{param2}
+    </select>
+
+    <select id="checkLoginByMap" resultType="User">
+        select * from t_user where username = #{username} and password = #{password}
+    </select>
+
+    <select id="checkLoginByParam" resultType="User">
+        select * from t_user where username = #{username} and password = #{password}
+    </select>
+</mapper>
